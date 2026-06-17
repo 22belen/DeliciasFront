@@ -7,17 +7,33 @@ function Login({ setToken }) {
   const navigate = useNavigate();
 
   const login = async () => {
-    const response = await fetch("http://localhost:8000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await response.json();
-    setToken(data.token);
-    navigate("/productos");
+      if (!response.ok) {
+        alert("Credenciales incorrectas");
+        return;
+      }
+
+      const data = await response.json();
+
+      if (!data.token) {
+        alert("El servidor no devolvió un token");
+        return;
+      }
+
+      setToken(data.token);
+      navigate("/productos");
+    } catch (error) {
+      alert("Error al conectar con el servidor");
+      console.error(error);
+    }
   };
 
   return (

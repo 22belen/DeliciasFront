@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./componentes/Login";
+import Productos from "./componentes/Productos";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -14,8 +15,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-
         <Route path="/login" element={<Login setToken={handleSetToken} />} />
+        <Route
+          path="/productos"
+          element={
+            token ? <Productos token={token} /> : <Navigate to="/login" />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
