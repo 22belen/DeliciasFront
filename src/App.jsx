@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./componentes/Login";
 import Productos from "./componentes/Productos";
+import AgregarProducto from "./componentes/AgregarProducto";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -20,6 +21,12 @@ function App() {
           path="/productos"
           element={
             token ? <Productos token={token} /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/productos/nuevo"
+          element={
+            token ? <AgregarProducto token={token} /> : <Navigate to="/login" />
           }
         />
       </Routes>
