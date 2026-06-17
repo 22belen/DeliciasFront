@@ -52,7 +52,7 @@ function Productos({ token }) {
               <td>${p.precio}</td>
               <td>
                 <button
-                  className="btn btn-warning btn-sm me-2"
+                  className="btn btn-secondary btn-sm me-2"
                   onClick={() => navigate(`/productos/${p.id}`)}
                 >
                   Editar
