@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./componentes/Login";
 import Productos from "./componentes/Productos";
 import AgregarProducto from "./componentes/AgregarProducto";
+import EditarProducto from "./componentes/EditarProducto";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -28,6 +29,9 @@ function App() {
           element={
             token ? <AgregarProducto token={token} /> : <Navigate to="/login" />
           }
+        <Route
+          path="/productos/:id"
+          element={token ? <EditarProducto /> : <Navigate to="/login" />}
         />
       </Routes>
     </BrowserRouter>
