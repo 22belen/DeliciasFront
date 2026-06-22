@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useStore from "../store";
 
 function Productos() {
   const [productos, setProductos] = useState([]);
   const navigate = useNavigate();
+  const token = useStore((state) => state.token);
 
   useEffect(() => {
     const obtenerProductos = async () => {
@@ -11,7 +13,6 @@ function Productos() {
       const data = await response.json();
       setProductos(data);
     };
-    const token = useStore((state) => state.token);
     obtenerProductos();
   }, []);
 

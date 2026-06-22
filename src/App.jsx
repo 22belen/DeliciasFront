@@ -4,6 +4,7 @@ import Productos from "./componentes/Productos";
 import AgregarProducto from "./componentes/AgregarProducto";
 import EditarProducto from "./componentes/EditarProducto";
 import useStore from "./store";
+import ProtectedRoute from "./componentes/ProtectedRoute";
 
 function App() {
   const token = useStore((state) => {
@@ -16,15 +17,27 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/productos"
-          element={token ? <Productos /> : <Navigate to="/login" />}
+          element={
+            <ProtectedRoute>
+              <Productos />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="/productos/nuevo"
-          element={token ? <AgregarProducto /> : <Navigate to="/login" />}
+          element={
+            <ProtectedRoute>
+              <AgregarProducto />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="/productos/:id"
-          element={token ? <EditarProducto /> : <Navigate to="/login" />}
+          element={
+            <ProtectedRoute>
+              <EditarProducto />
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </BrowserRouter>

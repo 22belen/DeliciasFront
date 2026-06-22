@@ -8,9 +8,7 @@ function EditarProducto() {
   const [precio, setPrecio] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
-  const setToken = useStore((state) => {
-    return state.token;
-  });
+  const token = useStore((state) => state.token);
 
   useEffect(() => {
     const obtenerProducto = async () => {
