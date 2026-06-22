@@ -28,7 +28,7 @@ function EditarProducto() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${Token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ nombre, descripcion, precio }),
     });

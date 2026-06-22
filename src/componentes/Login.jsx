@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useStore from "../store";
 
-function Login({ setToken }) {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const setToken = useStore((state) => {
+    return state.setToken;
+  });
 
   const login = async () => {
     try {
@@ -22,13 +26,13 @@ function Login({ setToken }) {
       }
 
       const data = await response.json();
-
       if (!data.token) {
         alert("El servidor no devolvió un token");
         return;
       }
 
       setToken(data.token);
+
       navigate("/productos");
     } catch (error) {
       alert("Error al conectar con el servidor");

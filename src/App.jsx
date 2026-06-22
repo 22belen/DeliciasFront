@@ -1,34 +1,27 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./componentes/Login";
 import Productos from "./componentes/Productos";
 import AgregarProducto from "./componentes/AgregarProducto";
 import EditarProducto from "./componentes/EditarProducto";
+import useStore from "./store";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token") || null);
-
-  const handleSetToken = (nuevoToken) => {
-    localStorage.setItem("token", nuevoToken);
-    setToken(nuevoToken);
-  };
-
+  const token = useStore((state) => {
+    return state.token;
+  });
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login setToken={handleSetToken} />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/productos"
-          element={
-            token ? <Productos token={token} /> : <Navigate to="/login" />
-          }
+          element={token ? <Productos /> : <Navigate to="/login" />}
         />
         <Route
           path="/productos/nuevo"
-          element={
-            token ? <AgregarProducto token={token} /> : <Navigate to="/login" />
-          }
+          element={token ? <AgregarProducto /> : <Navigate to="/login" />}
+        />
         <Route
           path="/productos/:id"
           element={token ? <EditarProducto /> : <Navigate to="/login" />}

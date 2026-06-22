@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useStore from "../store";
 
-function AgregarProducto({ token }) {
+function AgregarProducto() {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
   const navigate = useNavigate();
+  const setToken = useStore((state) => {
+    return state.token;
+  });
 
   const handleAgregar = async () => {
     await fetch("http://localhost:8000/productos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${setToken}`,
       },
       body: JSON.stringify({ nombre, descripcion, precio }),
     });
