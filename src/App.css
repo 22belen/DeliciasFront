@@ -1,0 +1,97 @@
+body {
+  font-family: "Inter", sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+
+.dashboard-card {
+  border: none !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: all 0.25s ease;
+  background: white;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(15, 23, 42, 0.12);
+}
+
+.product-item:hover {
+  background: #f1f5f9;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffe101;
+}
+
+.card-text-muted {
+  color: #64748b;
+}
+
+.product-list {
+  border: none;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.product-item:hover {
+  background: #f1f5f9;
+  transform: translateX(3px);
+}
+
+.product-name {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.product-price {
+  font-weight: 700;
+  color: #ffe101;
+}
+
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar h4 {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sidebar .btn-light {
+  border-radius: 10px;
+  font-weight: 500;
+  color: #0f172a;
+  background: transparent;
+  border: none;
+}
+
+.sidebar .btn-light:hover {
+  background: #f1f5f9;
+}

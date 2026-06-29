@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
 import Login from "./componentes/Login";
 import Productos from "./componentes/Productos";
 import AgregarProducto from "./componentes/AgregarProducto";
 import EditarProducto from "./componentes/EditarProducto";
 import useStore from "./store";
 import ProtectedRoute from "./componentes/ProtectedRoute";
+import Dashboard from "./componentes/Dashboard";
 
 function App() {
   const token = useStore((state) => {
@@ -15,6 +17,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/productos"
           element={

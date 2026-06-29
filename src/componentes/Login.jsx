@@ -33,7 +33,7 @@ function Login() {
 
       setToken(data.token);
 
-      navigate("/productos");
+      navigate("/dashboard");
     } catch (error) {
       alert("Error al conectar con el servidor");
       console.error(error);

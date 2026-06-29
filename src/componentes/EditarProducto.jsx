@@ -35,6 +35,13 @@ function EditarProducto() {
 
   return (
     <div className="container mt-5">
+      <button
+        className="btn btn-outline-secondary"
+        onClick={() => navigate("/dashboard")}
+      >
+        ← Volver
+      </button>
+
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h2 className="mb-4">Editar producto</h2>
