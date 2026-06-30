@@ -83,7 +83,7 @@ function Dashboard() {
 
         <div className="row mb-4">
           <div className="col-md-6">
-            <div className="card product-list p-2 mb-3">
+            <div className="card product-list p-3 mb-3">
               <h5 className="p-3 mb-0">Últimos productos agregados</h5>
               {ultimosProductos.map((p) => (
                 <div
