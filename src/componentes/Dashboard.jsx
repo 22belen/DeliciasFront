@@ -40,7 +40,7 @@ function Dashboard() {
   return (
     <div className="d-flex">
       <div className="sidebar p-3">
-        <h4 className="mb-5">Administrar</h4>
+        <h4 className="mb-5 mt-3">Administrar</h4>
         <button
           className="btn btn-light w-100 mb-2 text-start"
           onClick={() => navigate("/productos")}
